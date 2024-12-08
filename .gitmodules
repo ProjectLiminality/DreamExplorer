@@ -1,0 +1,6 @@
+[submodule "DreamVault/ClarityBehindComplexity"]
+	path = DreamVault/ClarityBehindComplexity
+	url = https://github.com/ProjectLiminality/ClarityBehindComplexity.git
+[submodule "DreamVault/TheGardenAndTheMachine"]
+	path = DreamVault/TheGardenAndTheMachine
+	url = https://github.com/ProjectLiminality/TheGardenAndTheMachine.git
