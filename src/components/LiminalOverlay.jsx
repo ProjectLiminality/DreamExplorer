@@ -10,14 +10,15 @@ const TiltingIcon = ({ onEnter, onHover }) => {
   const texture = useLoader(TextureLoader, `${process.env.PUBLIC_URL}/favicon.png`);
   const { size } = useThree();
 
-  const { scale } = useSpring({
+  const { scale, rotation } = useSpring({
     scale: hovered ? [5, 5, 5] : [4.5, 4.5, 4.5],
+    rotation: hovered ? [0, 0, 0] : [0, 0, 0],
     config: { mass: 1, tension: 280, friction: 60 }
   });
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      if (mesh.current) {
+      if (mesh.current && !hovered) {
         const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
         const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
         mesh.current.rotation.x = (-mouseY * Math.PI) / 10;
@@ -29,7 +30,7 @@ const TiltingIcon = ({ onEnter, onHover }) => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [hovered]);
 
   return (
     <animated.mesh
@@ -44,6 +45,7 @@ const TiltingIcon = ({ onEnter, onHover }) => {
         onHover(false);
       }}
       scale={scale}
+      rotation={rotation}
     >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={texture} transparent />
