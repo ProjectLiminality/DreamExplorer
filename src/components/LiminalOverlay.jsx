@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
+import { Canvas, useLoader, useThree } from '@react-three/fiber';
+import { useSpring, animated } from '@react-spring/three';
 import { TextureLoader } from 'three';
 import '../styles/LiminalOverlay.css';
 
@@ -8,6 +9,11 @@ const TiltingIcon = ({ onEnter }) => {
   const [hovered, setHovered] = useState(false);
   const texture = useLoader(TextureLoader, `${process.env.PUBLIC_URL}/favicon.png`);
   const { size } = useThree();
+
+  const { scale } = useSpring({
+    scale: hovered ? [6.66, 6.66, 6.66] : [5.55, 5.55, 5.55],
+    config: { mass: 1, tension: 280, friction: 60 }
+  });
 
   useEffect(() => {
     const handleMouseMove = (event) => {
@@ -26,16 +32,16 @@ const TiltingIcon = ({ onEnter }) => {
   }, []);
 
   return (
-    <mesh
+    <animated.mesh
       ref={mesh}
       onClick={onEnter}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      scale={hovered ? [6.66, 6.66, 6.66] : [5.55, 5.55, 5.55]}
+      scale={scale}
     >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={texture} transparent />
-    </mesh>
+    </animated.mesh>
   );
 };
 
