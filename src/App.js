@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import DreamSpace from './components/DreamSpace';
 import SearchPanel from './components/SearchPanel';
 
@@ -17,6 +17,20 @@ function App() {
       dreamGraphRef.current.displaySearchResults(searchResults);
     }
   };
+
+  const handleKeyDown = useCallback((event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key === 'f') {
+      event.preventDefault();
+      setIsSearchPanelOpen(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   return (
     <>
