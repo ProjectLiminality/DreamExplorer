@@ -11,7 +11,7 @@ const TiltingIcon = ({ onEnter }) => {
   const { size } = useThree();
 
   const { scale } = useSpring({
-    scale: hovered ? [6.66, 6.66, 6.66] : [5.55, 5.55, 5.55],
+    scale: hovered ? [5, 5, 5] : [4.5, 4.5, 4.5],
     config: { mass: 1, tension: 280, friction: 60 }
   });
 
