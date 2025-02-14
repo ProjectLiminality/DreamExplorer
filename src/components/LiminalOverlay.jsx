@@ -10,7 +10,7 @@ const TiltingIcon = ({ onEnter }) => {
 
   useFrame(({ mouse }) => {
     if (mesh.current) {
-      mesh.current.rotation.x = (mouse.y * Math.PI) / 10;
+      mesh.current.rotation.x = (-mouse.y * Math.PI) / 10; // Inverted y-axis
       mesh.current.rotation.y = (mouse.x * Math.PI) / 10;
     }
   });
@@ -21,7 +21,7 @@ const TiltingIcon = ({ onEnter }) => {
       onClick={onEnter}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      scale={hovered ? [7, 7, 7] : [6, 6, 6]}
+      scale={hovered ? [6.66, 6.66, 6.66] : [5.55, 5.55, 5.55]}
     >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={texture} transparent />
