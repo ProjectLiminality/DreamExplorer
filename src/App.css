@@ -10,7 +10,8 @@
   height: 100%;
   width: 100%;
   overflow-y: auto;
-  background-color: white;
+  background-color: #121212; /* Dark background color */
+  color: white; /* Ensure text is white for readability */
 }
 
 .dream-space-container {

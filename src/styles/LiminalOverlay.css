@@ -5,6 +5,8 @@
   align-items: center;
   padding: 20px;
   position: relative;
+  background-color: #121212; /* Dark background color */
+  color: white; /* Ensure text is white for readability */
 }
 
 .liminal-overlay canvas {
