@@ -56,7 +56,7 @@ const LiminalOverlay = ({ onEnter }) => {
 
   return (
     <div className="liminal-overlay">
-      <Canvas style={{ width: '1000px', height: '1000px' }}>
+      <Canvas style={{ width: '666px', height: '666px' }}>
         <TiltingIcon onEnter={onEnter} onHover={setIsHovered} />
       </Canvas>
       <div className={`hover-text ${isHovered ? 'visible' : ''}`}>
