@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Canvas, useLoader, useThree } from '@react-three/fiber';
+import { Canvas, useLoader, useThree, useFrame } from '@react-three/fiber';
 import { useSpring, animated } from '@react-spring/three';
-import { TextureLoader } from 'three';
+import { TextureLoader, Vector2 } from 'three';
 import '../styles/LiminalOverlay.css';
 
 const TiltingIcon = ({ onEnter, onHover }) => {
@@ -9,28 +9,35 @@ const TiltingIcon = ({ onEnter, onHover }) => {
   const [hovered, setHovered] = useState(false);
   const texture = useLoader(TextureLoader, `${process.env.PUBLIC_URL}/favicon.png`);
   const { size } = useThree();
+  const mouse = useRef(new Vector2());
 
-  const { scale, rotation } = useSpring({
+  const { scale, tiltFactor } = useSpring({
     scale: hovered ? [5, 5, 5] : [4.5, 4.5, 4.5],
-    rotation: hovered ? [0, 0, 0] : [0, 0, 0],
+    tiltFactor: hovered ? 0 : 1,
     config: { mass: 1, tension: 280, friction: 60 }
   });
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      if (mesh.current && !hovered) {
-        const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-        const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-        mesh.current.rotation.x = (-mouseY * Math.PI) / 10;
-        mesh.current.rotation.y = (mouseX * Math.PI) / 10;
-      }
+      mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [hovered]);
+  }, []);
+
+  useFrame(() => {
+    if (mesh.current) {
+      const targetRotationX = (-mouse.current.y * Math.PI) / 10;
+      const targetRotationY = (mouse.current.x * Math.PI) / 10;
+      
+      mesh.current.rotation.x += (targetRotationX * tiltFactor.get() - mesh.current.rotation.x) * 0.1;
+      mesh.current.rotation.y += (targetRotationY * tiltFactor.get() - mesh.current.rotation.y) * 0.1;
+    }
+  });
 
   return (
     <animated.mesh
@@ -45,7 +52,6 @@ const TiltingIcon = ({ onEnter, onHover }) => {
         onHover(false);
       }}
       scale={scale}
-      rotation={rotation}
     >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={texture} transparent />
