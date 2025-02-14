@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.dream-space-container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.landing-page {
+  padding: 20px;
+  background-color: white;
+  color: black;
+  z-index: 2;
+}
