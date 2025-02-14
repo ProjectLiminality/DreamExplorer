@@ -1,21 +1,23 @@
 .App {
-  display: flex;
-  flex-direction: column;
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.two-dimensional-webpage {
+  height: 100%;
+  width: 100%;
   overflow-y: auto;
+  background-color: white;
 }
 
 .dream-space-container {
-  height: 80vh;
+  height: 100%;
   width: 100%;
   position: relative;
-  z-index: 1;
 }
 
 .landing-page {
   padding: 20px;
-  background-color: white;
   color: black;
-  position: relative;
-  z-index: 2;
 }

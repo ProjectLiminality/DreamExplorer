@@ -35,31 +35,34 @@ function App() {
 
   return (
     <div className="App">
-      <LiminalOverlay onEnter={handleEnterLiminalSpace} />
-      {showDreamSpace && (
+      {!showDreamSpace ? (
+        <div className="two-dimensional-webpage">
+          <LiminalOverlay onEnter={handleEnterLiminalSpace} />
+          <LandingPage />
+        </div>
+      ) : (
         <div className="dream-space-container">
           <DreamSpace 
             dreamGraphRef={dreamGraphRef}
             onHover={(repoName) => console.log('Hovered node:', repoName)}
             onNodesChange={handleNodesChange}
           />
+          <SearchPanel
+            isOpen={isSearchPanelOpen}
+            onSearch={handleSearchComplete}
+            onClose={() => setIsSearchPanelOpen(false)}
+            repoNames={nodeNames}
+            threshold={0.5}
+            style={{
+              position: 'fixed',
+              top: '0%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 1000
+            }}
+          />
         </div>
       )}
-      <SearchPanel
-        isOpen={isSearchPanelOpen}
-        onSearch={handleSearchComplete}
-        onClose={() => setIsSearchPanelOpen(false)}
-        repoNames={nodeNames}
-        threshold={0.5}
-        style={{
-          position: 'fixed',
-          top: '0%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 1000
-        }}
-      />
-      <LandingPage />
     </div>
   );
 }
