@@ -6,7 +6,11 @@
       "/DreamVault/ClarityBehindComplexity/media1.jpg",
       "/DreamVault/ClarityBehindComplexity/media2.png",
       "/DreamVault/ClarityBehindComplexity/media3.gif"
-    ]
+    ],
+    "metadata": {
+      "type": "idea",
+      "relatedNodes": []
+    }
   },
   "TheGardenAndTheMachine": {
     "DreamTalk": "/DreamVault/TheGardenAndTheMachine/TheGardenAndTheMachine.gif",
@@ -15,7 +19,11 @@
       "/DreamVault/TheGardenAndTheMachine/media1.jpg",
       "/DreamVault/TheGardenAndTheMachine/media2.png",
       "/DreamVault/TheGardenAndTheMachine/media3.gif"
-    ]
+    ],
+    "metadata": {
+      "type": "idea",
+      "relatedNodes": []
+    }
   },
   "ComplicatedVsComplex": {
     "DreamTalk": "/DreamVault/ComplicatedVsComplex/ComplicatedVsComplex.png",
@@ -24,6 +32,10 @@
       "/DreamVault/ComplicatedVsComplex/media1.jpg",
       "/DreamVault/ComplicatedVsComplex/media2.png",
       "/DreamVault/ComplicatedVsComplex/media3.gif"
-    ]
+    ],
+    "metadata": {
+      "type": "idea",
+      "relatedNodes": []
+    }
   }
 }

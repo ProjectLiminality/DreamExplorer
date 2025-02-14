@@ -52,12 +52,9 @@ export async function getRepoData(repoName) {
       throw new Error(`No data found for repo: ${repoName}`);
     }
 
-    // Fetch metadata
-    const metadataPath = `/DreamVault/${repoName}/.pl`;
-    console.log(`Fetching metadata from: ${metadataPath}`);
-    const metadataContent = await fetchFileContent(metadataPath);
-    const metadata = metadataContent ? { content: metadataContent } : {};
-    console.log(`Metadata fetched:`, metadata);
+    // Get metadata directly from DreamVaultStructure
+    const metadata = repoData.metadata || { type: 'idea', relatedNodes: [] };
+    console.log(`Metadata retrieved:`, metadata);
 
     // Fetch DreamTalk media
     console.log(`Fetching DreamTalk media from: ${repoData.DreamTalk}`);
@@ -91,7 +88,7 @@ export async function getRepoData(repoName) {
     };
   } catch (error) {
     console.error('Error getting repo data:', error);
-    return { metadata: {}, dreamTalkMedia: [], dreamSongCanvas: null, dreamSongMedia: [] };
+    return { metadata: { type: 'idea', relatedNodes: [] }, dreamTalkMedia: [], dreamSongCanvas: null, dreamSongMedia: [] };
   }
 }
 
