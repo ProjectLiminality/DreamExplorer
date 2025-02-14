@@ -21,7 +21,7 @@ const TiltingIcon = ({ onEnter }) => {
       onClick={onEnter}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      scale={hovered ? [11, 11, 11] : [10, 10, 10]}
+      scale={hovered ? [7, 7, 7] : [6, 6, 6]}
     >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={texture} transparent />
