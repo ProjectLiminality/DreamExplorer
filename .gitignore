@@ -1,0 +1,8 @@
+.aider*
+.env
+/.pl
+/DreamExplorer.sublime-project
+/DreamExplorer.sublime-workspace
+/App/src/.DS_Store
+/node_modules
+/package-lock.json

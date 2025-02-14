@@ -1,0 +1,11 @@
+.aider*
+/.DS_Store
+/.env
+/package-lock.json
+/semantic_distances.json
+/semantic_distances.json
+/semantic_search.sublime-workspace
+/python/names.json
+/node_modules
+/venv
+/config.json
