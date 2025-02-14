@@ -1,6 +1,6 @@
 {
   "ClarityBehindComplexity": {
-    "DreamTalk": "ClarityBehindComplexity.gif",
+    "DreamTalk": "ClarityBehindComplexity.mp4",
     "DreamSong": "DreamSong.canvas",
     "DreamSongMedia": [
       "media1.jpg",
@@ -36,6 +36,32 @@
     "metadata": {
       "type": "idea",
       "relatedNodes": []
+    }
+  },
+  "SaraYardeni": {
+    "DreamTalk": "SaraYardeni.png",
+    "DreamSong": "DreamSong.canvas",
+    "DreamSongMedia": [
+      "media1.jpg",
+      "media2.png",
+      "media3.gif"
+    ],
+    "metadata": {
+      "type": "person",
+      "relatedNodes": ["WingsOfBeing"]
+    }
+  },
+  "WingsOfBeing": {
+    "DreamTalk": "WingsOfBeing.png",
+    "DreamSong": "DreamSong.canvas",
+    "DreamSongMedia": [
+      "media1.jpg",
+      "media2.png",
+      "media3.gif"
+    ],
+    "metadata": {
+      "type": "idea",
+      "relatedNodes": ["SaraYardeni"]
     }
   }
 }
