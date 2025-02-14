@@ -63,7 +63,8 @@ Dream Explorer is released under the [GNU AFFERO GENERAL PUBLIC LICENSE](LICENSE
 
 ## To-Do List
 
-- [ ] Add support for dreamer nodes
+- [x] Add support for dreamer nodes
 - [ ] Add landing page
 - [ ] Update website URL to liminality.space domain
 - [ ] Add readme support
+- [ ] Create GitHub workflow for generate_map.py to automatically update DreamVaultStructure.json
