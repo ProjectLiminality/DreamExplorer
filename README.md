@@ -60,3 +60,10 @@ We welcome contributions to the Dream Explorer project! Contributing guidelines 
 ## License
 
 Dream Explorer is released under the [GNU AFFERO GENERAL PUBLIC LICENSE](LICENSE).
+
+## To-Do List
+
+- [ ] Add support for dreamer nodes
+- [ ] Add landing page
+- [ ] Update website URL to liminality.space domain
+- [ ] Add readme support
