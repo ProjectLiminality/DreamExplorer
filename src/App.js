@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, Suspense } from 'react';
 import './App.css';
 import DreamSpace from './components/DreamSpace';
 import SearchPanel from './components/SearchPanel';
@@ -48,7 +48,9 @@ function App() {
     <div className="App">
       {!showDreamSpace ? (
         <div className="two-dimensional-webpage">
-          <LiminalOverlay onEnter={handleEnterLiminalSpace} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LiminalOverlay onEnter={handleEnterLiminalSpace} />
+          </Suspense>
           <LandingPage />
         </div>
       ) : (
