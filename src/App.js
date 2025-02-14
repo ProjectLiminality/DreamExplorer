@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import './App.css';
 import DreamSpace from './components/DreamSpace';
 import SearchPanel from './components/SearchPanel';
@@ -28,6 +28,13 @@ function App() {
       setIsSearchPanelOpen(true);
     }
   }, []);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   const handleEnterLiminalSpace = () => {
     setShowDreamSpace(true);
