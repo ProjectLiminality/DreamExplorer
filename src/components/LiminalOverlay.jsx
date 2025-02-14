@@ -4,7 +4,7 @@ import { useSpring, animated } from '@react-spring/three';
 import { TextureLoader } from 'three';
 import '../styles/LiminalOverlay.css';
 
-const TiltingIcon = ({ onEnter }) => {
+const TiltingIcon = ({ onEnter, onHover }) => {
   const mesh = useRef();
   const [hovered, setHovered] = useState(false);
   const texture = useLoader(TextureLoader, `${process.env.PUBLIC_URL}/favicon.png`);
@@ -35,8 +35,14 @@ const TiltingIcon = ({ onEnter }) => {
     <animated.mesh
       ref={mesh}
       onClick={onEnter}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
+      onPointerOver={() => {
+        setHovered(true);
+        onHover(true);
+      }}
+      onPointerOut={() => {
+        setHovered(false);
+        onHover(false);
+      }}
       scale={scale}
     >
       <planeGeometry args={[1, 1]} />
@@ -46,11 +52,16 @@ const TiltingIcon = ({ onEnter }) => {
 };
 
 const LiminalOverlay = ({ onEnter }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className="liminal-overlay">
       <Canvas style={{ width: '1000px', height: '1000px' }}>
-        <TiltingIcon onEnter={onEnter} />
+        <TiltingIcon onEnter={onEnter} onHover={setIsHovered} />
       </Canvas>
+      <div className={`hover-text ${isHovered ? 'visible' : ''}`}>
+        Enter liminal space
+      </div>
     </div>
   );
 };
