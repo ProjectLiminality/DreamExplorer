@@ -21,7 +21,7 @@ const TiltingIcon = ({ onEnter }) => {
       onClick={onEnter}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      scale={hovered ? [1.1, 1.1, 1.1] : [1, 1, 1]}
+      scale={hovered ? [11, 11, 11] : [10, 10, 10]}
     >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={texture} transparent />
@@ -32,7 +32,7 @@ const TiltingIcon = ({ onEnter }) => {
 const LiminalOverlay = ({ onEnter }) => {
   return (
     <div className="liminal-overlay">
-      <Canvas style={{ width: '100px', height: '100px' }}>
+      <Canvas style={{ width: '1000px', height: '1000px' }}>
         <TiltingIcon onEnter={onEnter} />
       </Canvas>
     </div>
