@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import '../styles/LiminalOverlay.css';
 
@@ -7,13 +7,23 @@ const TiltingIcon = ({ onEnter }) => {
   const mesh = useRef();
   const [hovered, setHovered] = useState(false);
   const texture = useLoader(TextureLoader, `${process.env.PUBLIC_URL}/favicon.png`);
+  const { size } = useThree();
 
-  useFrame(({ mouse }) => {
-    if (mesh.current) {
-      mesh.current.rotation.x = (-mouse.y * Math.PI) / 10; // Inverted y-axis
-      mesh.current.rotation.y = (mouse.x * Math.PI) / 10;
-    }
-  });
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      if (mesh.current) {
+        const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        mesh.current.rotation.x = (-mouseY * Math.PI) / 10;
+        mesh.current.rotation.y = (mouseX * Math.PI) / 10;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   return (
     <mesh
