@@ -102,7 +102,7 @@ const DreamSpace = ({ dreamGraphRef, onHover, onExit }) => {
           right: '20px',
           background: 'black',
           color: 'white',
-          border: '2px solid white',
+          border: '2px solid black',
           borderRadius: '50%',
           width: '40px',
           height: '40px',
@@ -115,7 +115,7 @@ const DreamSpace = ({ dreamGraphRef, onHover, onExit }) => {
           zIndex: 1000
         }}
       >
-        X
+      x
       </button>
     </div>
   );
