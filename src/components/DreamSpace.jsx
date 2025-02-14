@@ -98,14 +98,16 @@ const DreamSpace = ({ dreamGraphRef, onHover, onExit }) => {
         onClick={onExit}
         style={{
           position: 'absolute',
-          top: '10px',
-          right: '10px',
-          background: 'rgba(255, 255, 255, 0.7)',
-          border: 'none',
+          top: '20px',
+          right: '20px',
+          background: 'black',
+          color: 'white',
+          border: '2px solid white',
           borderRadius: '50%',
-          width: '30px',
-          height: '30px',
-          fontSize: '20px',
+          width: '40px',
+          height: '40px',
+          fontSize: '24px',
+          fontWeight: 'bold',
           cursor: 'pointer',
           display: 'flex',
           justifyContent: 'center',
@@ -113,7 +115,7 @@ const DreamSpace = ({ dreamGraphRef, onHover, onExit }) => {
           zIndex: 1000
         }}
       >
-        ×
+        X
       </button>
     </div>
   );
