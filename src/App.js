@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import './App.css';
 import DreamSpace from './components/DreamSpace';
 import SearchPanel from './components/SearchPanel';
@@ -8,14 +8,6 @@ function App() {
   const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(false);
   const dreamGraphRef = useRef(null);
   const [nodeNames, setNodeNames] = useState([]);
-  const [readmeContent, setReadmeContent] = useState('');
-
-  useEffect(() => {
-    fetch('README.md')
-      .then(response => response.text())
-      .then(text => setReadmeContent(text))
-      .catch(error => console.error('Error fetching README:', error));
-  }, []);
 
   const handleNodesChange = (newNodeNames) => {
     setNodeNames(newNodeNames);
@@ -35,16 +27,9 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
-
   return (
     <div className="App">
-      <div className="dream-space-container" style={{ height: '100vh', width: '100vw' }}>
+      <div className="dream-space-container">
         <DreamSpace 
           dreamGraphRef={dreamGraphRef}
           onHover={(repoName) => console.log('Hovered node:', repoName)}
@@ -65,7 +50,7 @@ function App() {
           zIndex: 1000
         }}
       />
-      <LandingPage content={readmeContent} />
+      <LandingPage />
     </div>
   );
 }
