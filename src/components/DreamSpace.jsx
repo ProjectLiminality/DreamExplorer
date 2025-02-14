@@ -4,14 +4,13 @@ import DreamGraph from './DreamGraph';
 import CameraController from './CameraController';
 import useDreamNodes from '../hooks/useDreamNodes';
 
-const DreamSpace = ({ dreamGraphRef, onHover }) => {
+const DreamSpace = ({ dreamGraphRef, onHover, onExit }) => {
   const initialNodeCount = parseInt(localStorage.getItem('initialNodeCount') || '5');
   const { dreamNodes, error, spawnNode } = useDreamNodes(initialNodeCount);
   const [resetCamera, setResetCamera] = useState(null);
   const [hoveredNode, setHoveredNode] = useState(null);
   const [lastSearchResults, setLastSearchResults] = useState([]);
   const searchCountRef = useRef(0);
-
 
   const onResetCamera = useCallback((resetFunc) => {
     setResetCamera(() => resetFunc);
@@ -49,7 +48,6 @@ const DreamSpace = ({ dreamGraphRef, onHover }) => {
     }
   }, [spawnNode]);
 
-
   const handleHover = useCallback((repoName) => {
     setHoveredNode(repoName);
     if (onHover) {
@@ -75,7 +73,7 @@ const DreamSpace = ({ dreamGraphRef, onHover }) => {
   }
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <Canvas camera={{ position: [0, 0, 100], fov: 75, near: 0.1, far: 3000 }}>
         <CameraController onResetCamera={onResetCamera} />
         <ambientLight intensity={0.5} />
@@ -96,6 +94,27 @@ const DreamSpace = ({ dreamGraphRef, onHover }) => {
           Loading...
         </div>
       )}
+      <button
+        onClick={onExit}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          background: 'rgba(255, 255, 255, 0.7)',
+          border: 'none',
+          borderRadius: '50%',
+          width: '30px',
+          height: '30px',
+          fontSize: '20px',
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000
+        }}
+      >
+        ×
+      </button>
     </div>
   );
 };

@@ -33,6 +33,10 @@ function App() {
     setShowDreamSpace(true);
   };
 
+  const handleExitLiminalSpace = () => {
+    setShowDreamSpace(false);
+  };
+
   return (
     <div className="App">
       {!showDreamSpace ? (
@@ -46,6 +50,7 @@ function App() {
             dreamGraphRef={dreamGraphRef}
             onHover={(repoName) => console.log('Hovered node:', repoName)}
             onNodesChange={handleNodesChange}
+            onExit={handleExitLiminalSpace}
           />
           <SearchPanel
             isOpen={isSearchPanelOpen}
