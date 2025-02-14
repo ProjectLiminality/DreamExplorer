@@ -1,0 +1,46 @@
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.search-component {
+  max-width: 600px;
+  margin: 100px auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #000;
+  border: 2px solid #007AFF; /* Replace with your desired blue hex color */
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007AFF; /* Replace with your desired blue hex color */
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Styles for the results (you may want to add these to App.js) */
+.results {
+  margin-top: 20px;
+}
+
+.result-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.result-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
