@@ -68,4 +68,5 @@ Dream Explorer is released under the [GNU AFFERO GENERAL PUBLIC LICENSE](LICENSE
 - [ ] Update website URL to liminality.space domain
 - [ ] Add readme support
 - [ ] Create GitHub workflow for generate_map.py to automatically update DreamVaultStructure.json
-- [ ] Fix search bar hotkey (prevent browser search from overriding app search)
+- [x] Fix search bar hotkey (prevent browser search from overriding app search)
+- [ ] Implement semantic search functionality
