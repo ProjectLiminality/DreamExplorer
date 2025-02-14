@@ -1,11 +1,11 @@
 {
   "ClarityBehindComplexity": {
-    "DreamTalk": "/DreamVault/ClarityBehindComplexity/ClarityBehindComplexity.gif",
-    "DreamSong": "/DreamVault/ClarityBehindComplexity/DreamSong.canvas",
+    "DreamTalk": "ClarityBehindComplexity.gif",
+    "DreamSong": "DreamSong.canvas",
     "DreamSongMedia": [
-      "/DreamVault/ClarityBehindComplexity/media1.jpg",
-      "/DreamVault/ClarityBehindComplexity/media2.png",
-      "/DreamVault/ClarityBehindComplexity/media3.gif"
+      "media1.jpg",
+      "media2.png",
+      "media3.gif"
     ],
     "metadata": {
       "type": "idea",
@@ -13,12 +13,12 @@
     }
   },
   "TheGardenAndTheMachine": {
-    "DreamTalk": "/DreamVault/TheGardenAndTheMachine/TheGardenAndTheMachine.gif",
-    "DreamSong": "/DreamVault/TheGardenAndTheMachine/DreamSong.canvas",
+    "DreamTalk": "TheGardenAndTheMachine.gif",
+    "DreamSong": "DreamSong.canvas",
     "DreamSongMedia": [
-      "/DreamVault/TheGardenAndTheMachine/media1.jpg",
-      "/DreamVault/TheGardenAndTheMachine/media2.png",
-      "/DreamVault/TheGardenAndTheMachine/media3.gif"
+      "media1.jpg",
+      "media2.png",
+      "media3.gif"
     ],
     "metadata": {
       "type": "idea",
@@ -26,12 +26,12 @@
     }
   },
   "ComplicatedVsComplex": {
-    "DreamTalk": "/DreamVault/ComplicatedVsComplex/ComplicatedVsComplex.png",
-    "DreamSong": "/DreamVault/ComplicatedVsComplex/DreamSong.canvas",
+    "DreamTalk": "ComplicatedVsComplex.png",
+    "DreamSong": "DreamSong.canvas",
     "DreamSongMedia": [
-      "/DreamVault/ComplicatedVsComplex/media1.jpg",
-      "/DreamVault/ComplicatedVsComplex/media2.png",
-      "/DreamVault/ComplicatedVsComplex/media3.gif"
+      "media1.jpg",
+      "media2.png",
+      "media3.gif"
     ],
     "metadata": {
       "type": "idea",

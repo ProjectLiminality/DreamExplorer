@@ -1,9 +1,12 @@
 import DreamVaultStructure from '../DreamVaultStructure.json';
 
+const BASE_PATH = '/DreamVault';
+
 async function fetchFileContent(filePath) {
-  console.log(`Fetching file content for: ${filePath}`);
+  const fullPath = `${BASE_PATH}/${filePath}`;
+  console.log(`Fetching file content for: ${fullPath}`);
   try {
-    const response = await fetch(`${process.env.PUBLIC_URL}${filePath}`);
+    const response = await fetch(`${process.env.PUBLIC_URL}${fullPath}`);
     console.log(`Fetch response status: ${response.status}`);
     const blob = await response.blob();
     return new Promise((resolve, reject) => {
@@ -57,12 +60,13 @@ export async function getRepoData(repoName) {
     console.log(`Metadata retrieved:`, metadata);
 
     // Fetch DreamTalk media
-    console.log(`Fetching DreamTalk media from: ${repoData.DreamTalk}`);
-    const dreamTalkMedia = await fetchMediaFile(repoData.DreamTalk);
+    const dreamTalkPath = `${repoName}/${repoData.DreamTalk}`;
+    console.log(`Fetching DreamTalk media from: ${dreamTalkPath}`);
+    const dreamTalkMedia = await fetchMediaFile(dreamTalkPath);
     console.log(`DreamTalk media fetched:`, dreamTalkMedia ? 'Success' : 'Failed');
 
     // Fetch DreamSong canvas
-    const dreamSongCanvasPath = repoData.DreamSong;
+    const dreamSongCanvasPath = `${repoName}/${repoData.DreamSong}`;
     const canvasContent = await fetchFileContent(dreamSongCanvasPath);
     let dreamSongCanvas = null;
     if (canvasContent) {
@@ -77,7 +81,7 @@ export async function getRepoData(repoName) {
     }
 
     // Fetch DreamSong media
-    const dreamSongMediaPromises = repoData.DreamSongMedia.map(fetchMediaFile);
+    const dreamSongMediaPromises = repoData.DreamSongMedia.map(media => fetchMediaFile(`${repoName}/${media}`));
     const dreamSongMedia = (await Promise.all(dreamSongMediaPromises)).filter(media => media !== null);
 
     return { 
