@@ -5,17 +5,14 @@
   padding: 20px;
 }
 
-.liminal-overlay button {
-  padding: 15px 30px;
-  font-size: 18px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
+.liminal-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-.liminal-overlay button:hover {
-  background-color: #45a049;
+.liminal-icon:hover {
+  transform: scale(1.1);
 }
