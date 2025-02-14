@@ -3,11 +3,13 @@ import './App.css';
 import DreamSpace from './components/DreamSpace';
 import SearchPanel from './components/SearchPanel';
 import LandingPage from './components/LandingPage';
+import LiminalOverlay from './components/LiminalOverlay';
 
 function App() {
   const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(false);
   const dreamGraphRef = useRef(null);
   const [nodeNames, setNodeNames] = useState([]);
+  const [showDreamSpace, setShowDreamSpace] = useState(false);
 
   const handleNodesChange = (newNodeNames) => {
     setNodeNames(newNodeNames);
@@ -27,15 +29,22 @@ function App() {
     }
   }, []);
 
+  const handleEnterLiminalSpace = () => {
+    setShowDreamSpace(true);
+  };
+
   return (
     <div className="App">
-      <div className="dream-space-container">
-        <DreamSpace 
-          dreamGraphRef={dreamGraphRef}
-          onHover={(repoName) => console.log('Hovered node:', repoName)}
-          onNodesChange={handleNodesChange}
-        />
-      </div>
+      <LiminalOverlay onEnter={handleEnterLiminalSpace} />
+      {showDreamSpace && (
+        <div className="dream-space-container">
+          <DreamSpace 
+            dreamGraphRef={dreamGraphRef}
+            onHover={(repoName) => console.log('Hovered node:', repoName)}
+            onNodesChange={handleNodesChange}
+          />
+        </div>
+      )}
       <SearchPanel
         isOpen={isSearchPanelOpen}
         onSearch={handleSearchComplete}

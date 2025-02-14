@@ -8,10 +8,14 @@
 .dream-space-container {
   height: 80vh;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .landing-page {
   padding: 20px;
   background-color: white;
   color: black;
+  position: relative;
+  z-index: 2;
 }
